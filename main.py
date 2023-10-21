@@ -1,11 +1,16 @@
 if __name__ == "__main__":
 
+    notes = []
+
+
     while True:
+        print("> ", end = "")
         command = input()
         if command == "q":
             break
         if command == "list":
-            print("list")
+            for i in range(0, len(notes)):
+                print(f"{i}. {notes[i]}")
             continue
         if command == "remove":
             print("removed")
