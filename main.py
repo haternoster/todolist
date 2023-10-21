@@ -13,6 +13,12 @@ if __name__ == "__main__":
                 print(f"{i+1}. {notes[i]}")
             continue
         if command == "remove":
+            index = int(input())
+            new_notes = []
+            for i in range(0, len(notes)):
+                if index != (i+1):
+                    new_notes += [notes[i]]
+            notes = new_notes
             print("removed")
             continue
         if command == "add":
