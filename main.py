@@ -11,9 +11,11 @@ if __name__ == "__main__":
         if command == "list":
             for i in range(0, len(notes)):
                 print(f"{i+1}. {notes[i]}")
+            if len(notes) == 0:
+                print("list is empty")
             continue
         if command == "remove":
-            index = int(input())
+            index = int(input("index: "))
             new_notes = []
             for i in range(0, len(notes)):
                 if index != (i+1):
@@ -22,7 +24,7 @@ if __name__ == "__main__":
             print("removed")
             continue
         if command == "add":
-            note = input()
+            note = input("note: ")
             notes += [note]
             print("added")
             continue
