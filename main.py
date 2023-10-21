@@ -10,13 +10,15 @@ if __name__ == "__main__":
             break
         if command == "list":
             for i in range(0, len(notes)):
-                print(f"{i}. {notes[i]}")
+                print(f"{i+1}. {notes[i]}")
             continue
         if command == "remove":
             print("removed")
             continue
         if command == "add":
-            print("add")
+            note = input()
+            notes += [note]
+            print("added")
             continue
         if command == "remove_last":
             print("last removed")
