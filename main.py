@@ -5,7 +5,9 @@ if __name__ == "__main__":
     notes = []
     notesfile = "notes.csv"
 
-    notes = load_from_file(notesfile)
+    file_saver = NotesSaver(notesfile)
+
+    notes = file_saver.load_from_file()
     while True:
 
         print("> ", end="")
@@ -25,18 +27,18 @@ if __name__ == "__main__":
                 if index != (i + 1):
                     new_notes += [notes[i]]
             notes = new_notes
-            save_to_file(notesfile, notes)
+            file_saver.save_to_file(notes)
             print("removed")
             continue
         if command == "add":
             note = input("note: ")
             notes += [note]
-            save_to_file(notesfile, notes)
+            file_saver.save_to_file(notes)
             print("added")
             continue
         if command == "remove_last":
             del notes[-1]
-            save_to_file(notesfile, notes)
+            file_saver.save_to_file(notes)
             print("last removed")
             continue
         if command == "help":
