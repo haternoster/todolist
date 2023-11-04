@@ -58,6 +58,7 @@ if __name__ == "__main__":
             print("added")
             continue
         if command == "remove_last":
+            del notes[-1]
             save_to_file(notesfile)
             print("last removed")
             continue
