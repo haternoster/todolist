@@ -1,48 +1,32 @@
 from notes_file_saver import *
+from to_do_list_engine import *
 
 if __name__ == "__main__":
 
-    notes = []
     notesfile = "notes.csv"
 
-    file_saver = NotesSaver(notesfile)
+    to_do_list_engine = ToDoList(notesfile)
 
-    notes = file_saver.load_from_file()
     while True:
 
         print("> ", end="")
         command = input()
-        if command == "q":
+        if command == "quit" or command == "q":
             break
         if command == "list":
-            for i in range(0, len(notes)):
-                print(f"{i + 1}. {notes[i]}")
-            if len(notes) == 0:
-                print("list is empty")
+            to_do_list_engine.list_notes()
             continue
         if command == "remove":
-            index = int(input("index: "))
-            new_notes = []
-            for i in range(0, len(notes)):
-                if index != (i + 1):
-                    new_notes += [notes[i]]
-            notes = new_notes
-            file_saver.save_to_file(notes)
-            print("removed")
+            to_do_list_engine.remove()
             continue
         if command == "add":
-            note = input("note: ")
-            notes += [note]
-            file_saver.save_to_file(notes)
-            print("added")
+            to_do_list_engine.add()
             continue
         if command == "remove_last":
-            del notes[-1]
-            file_saver.save_to_file(notes)
-            print("last removed")
+            to_do_list_engine.remove_last()
             continue
-        if command == "help":
-            print("avaliable commands:")
+        if command == "help" or command == "h":
+            print("available commands:")
             print("\t* q")
             print("\t* list")
             print("\t* remove")
@@ -50,5 +34,4 @@ if __name__ == "__main__":
             print("\t* remove_last")
             print("\t* help")
             continue
-
         print(f"invalid command {command}")
