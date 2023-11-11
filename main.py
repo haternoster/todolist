@@ -1,4 +1,3 @@
-from notes_file_saver import *
 from to_do_list_engine import *
 
 if __name__ == "__main__":
@@ -13,6 +12,10 @@ if __name__ == "__main__":
         command = input()
         if command == "quit" or command == "q":
             break
+        if command == "switch":
+            notesfile = input("switch to: ") + ".csv"
+            to_do_list_engine = ToDoList(notesfile)
+            continue
         if command == "list":
             to_do_list_engine.list_notes()
             continue
